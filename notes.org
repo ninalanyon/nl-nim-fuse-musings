@@ -1,0 +1,33 @@
+* Notes on FUSE file systems and Nim
+
+This file will be a mixture of diary and code examples.  the general
+idea is to provide as much detail as possible on creating a FUSE file
+system in Nim but without unnecessary detail such as cross-platform
+compatibility.
+
+The initial intent is to focus on direct use of the FUSE library not
+on the creation of a Nim library that wraps the C library.  I have
+looked at several such projects and all of them either fail to compile
+or crash when run; in addition they complicate the business by various
+combinations of including automated configuration, cross-platform
+code, object oriented wrappers, etc.
+
+I will examine these projects for ideas and solutions and try to
+distil them down to the simplest form.
+
+The basic idea is to solve several problems starting with the most
+fundamental and assuming that the reader (and this writer) is expert
+in neither Nim nor C and is unfamiliar with the FUSE library and how
+to call C libraries from Nim.
+
+The following lists the high level tasks to be performed in order:
+
+- learn how to call C functions in Nim
+- learn how to provide callbacks written in Nim to be called from C
+- learn how to use in Nim data structures that are defined in C
+  headers or how to redefine them in Nim if necessary
+- define the simplest possible file system specification
+- implement the specification in Nim
+- create tests that demonstrate that the implementation works
+- repeat the definition, implementation, test steps with ever
+  increasingly sophisticated, and I hope useful, ideas.
